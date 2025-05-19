@@ -40,7 +40,7 @@ Due to the low amplitude of these signals and the presence of external/internal 
 
 **Circuit Diagram:**
 
-![Instrumentation Amplifier Circuit Diagram](images/ina_circuit.png)
+<img src="images/ina_circuit.png" alt="Instrumentation Amplifier" width="500"/>
 
 ---
 
@@ -52,11 +52,11 @@ Due to the low amplitude of these signals and the presence of external/internal 
 
 **Circuit Diagram:**
 
-![Notch Filter Circuit Diagram](images/notch_filter_circuit.png)
+<img src="images/notch_filter_circuit.png" alt="Notch Filter - Circuit Diagram" width="500"/>
 
 **Simulation Output:**
 
-![Notch Filter Simulation Output](images/notch_filter_sim_output.png)
+<img src="images/notch_filter_sim_output.png" alt="Notch Filter - simulation output" width="500"/>
 
 ---
 
@@ -68,11 +68,11 @@ Due to the low amplitude of these signals and the presence of external/internal 
 
 **Circuit Diagram:**
 
-![Low-Pass Filter Circuit Diagram](images/lpf_circuit.png)
+<img src="images/lpf_circuit.png" alt="Low-Pass Filter - Circuit Diagram" width="500"/>
 
 **Simulation Output:**
 
-![Low-Pass Filter Simulation Output](images/lpf_sim_output.png)
+<img src="images/lpf_sim_output.png" alt="Low-Pass Filter - simulation output" width="500"/>
 
 ---
 
@@ -113,18 +113,23 @@ The simulation included:
 
 - **Transient Analysis**: To observe the time-domain response of the circuit to a typical ECG waveform.
 - **AC Analysis**: To evaluate the frequency response of the circuit, particularly the filter behavior.
+- **Overall Circuit View**: To visualize the complete schematic used for simulation.
+
+### Overall ECG Circuit Diagram (LTspice Schematic)
+
+<img src="images/overall_circuit.png" alt="Overall ECG Circuit Diagram" width="500"/>
 
 ### Transient Analysis (ECG Waveform Output)
 
 This shows how the input ECG waveform is processed over time. The amplification and filtering stages yield a smooth, readable ECG signal.
 
-![Transient Output - ECG Waveform](images/transient_output.png)
+<img src="images/transient_output.png" alt="Transient Output - ECG Waveform" width="500"/>
 
 ### AC Analysis (Frequency Response)
 
 This plot highlights the frequency characteristics of the circuit, validating the design of the low-pass and notch filters.
 
-![AC Analysis Output - Frequency Response](images/ac_analysis_output.png)
+<img src="images/ac_analysis_output.png" alt="AC Analysis Output - Frequency Response" width="500"/>
 
 ---
 
@@ -143,15 +148,15 @@ As a result, only the **instrumentation amplifier** and the **low-pass filter** 
 
 **Hardware Setup Image:**
 
-![Hardware Setup](images/hardware_setup.png)
+<img src="images/hardware_setup.png" alt="hardware_setup" width="500"/>
 
 **Oscilloscope Output (Human Subject):**
 
-![ECG Hardware Output](images/hardware_output_waveform.png)
+<img src="images/hardware_output_waveform.png" alt="Oscilloscope Output" width="500"/>
 
 **Test Subject with Electrodes:**
 
-![Test Subject](images/person_with_patches.png)
+<img src="images/person_with_patches.png" alt="Test Subject" width="500"/>
 
 ---
 
@@ -184,8 +189,7 @@ This project demonstrates that a low-power, analog ECG circuit can be constructe
 
 ## 9. Contributors
 
-- Pranav Maruti Shanbhag (USN: 4NI24EC407)  
-- Adithya Y (USN: 4N23EC005)  
-- Anirudha Jayaprakash (USN: 4NI23EC014)  
-- Ballambettu Milan Shankar Bhat (USN: 4NI23EC019)  
+- Pranav Maruti Shanbhag (USN: 4NI24EC407)   
+- Anirudha Jayaprakash (USN: 4NI23EC014)
+- Adithya Y (USN: 4N23EC005) 
 - Aneesh R Kulkarni (USN: 4NI23EC013)  

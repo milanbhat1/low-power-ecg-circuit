@@ -42,10 +42,6 @@ Due to the low amplitude of these signals and the presence of external/internal 
 
 ![Instrumentation Amplifier Circuit Diagram](images/ina_circuit.png)
 
-**Simulation Output:**
-
-![INA Simulation Output](images/ina_sim_output.png)
-
 ---
 
 ### 2.2 Notch Filter
@@ -111,19 +107,24 @@ Instrumentation Amplifier → Notch Filter → Low-Pass Filter
 
 ## 4. Simulation Results
 
-- Stage-wise outputs show:
-  - Amplification of weak ECG signals
-  - Suppression of 60 Hz interference
-  - Reduction of high-frequency noise
+The circuit was simulated using **LTspice**. The ECG waveform was applied using a file-based voltage source, allowing for a realistic biomedical signal to be processed through the analog stages.
 
-- Final waveform exhibits:
-  - P-wave
-  - QRS complex
-  - T-wave
+The simulation included:
 
-**Complete Simulation Output:**
+- **Transient Analysis**: To observe the time-domain response of the circuit to a typical ECG waveform.
+- **AC Analysis**: To evaluate the frequency response of the circuit, particularly the filter behavior.
 
-![Complete ECG Simulation Output](images/complete_simulation_output.png)
+### Transient Analysis (ECG Waveform Output)
+
+This shows how the input ECG waveform is processed over time. The amplification and filtering stages yield a smooth, readable ECG signal.
+
+![Transient Output - ECG Waveform](images/transient_output.png)
+
+### AC Analysis (Frequency Response)
+
+This plot highlights the frequency characteristics of the circuit, validating the design of the low-pass and notch filters.
+
+![AC Analysis Output - Frequency Response](images/ac_analysis_output.png)
 
 ---
 

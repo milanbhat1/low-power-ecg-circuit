@@ -36,7 +36,7 @@ Below is the complete ECG signal conditioning circuit diagram simulated and impl
 
 ### Full Circuit Diagram
 
-<img src="images/full_circuit_diagram.png" width="650"/>
+<img src="images/overall1_circuit.png" width="650"/>
 
 ---
 
@@ -70,10 +70,6 @@ Below is the complete ECG signal conditioning circuit diagram simulated and impl
 ## 4. Circuit Simulation
 
 Simulation was performed using **LTspice**. The ECG waveform was applied using a `.txt` file as a voltage source to replicate a real cardiac signal.
-
-### Transient Analysis Output – Instrumentation Amplifier
-
-<img src="images/transient_output_ina.png" width="600"/>
 
 ### Transient Analysis Output – Low-Pass Filter
 

@@ -79,6 +79,11 @@ Simulation was performed using **LTspice**. The ECG waveform was applied using a
 
 <img src="images/ac_analysis_output.png" width="600"/>
 
+### Transient Analysis Output
+
+<img src="images/trasient_analysis_output.png" width="600"/>
+
+
 ### Simulation Files
 
 - [`ecg_circuit.asc`](simulations/ecg_circuit.asc) – LTspice simulation circuit

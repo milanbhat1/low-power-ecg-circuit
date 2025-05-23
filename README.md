@@ -1,195 +1,142 @@
-# Low-Power ECG Circuit
+# Cardio Tracker - Low-Power ECG Circuit
 
-This repository contains the design, simulation, and documentation for a low-power analog ECG (Electrocardiogram) circuit. The project focuses on amplifying and filtering bio-potential signals from the human body to capture clean, interpretable ECG waveforms. This design is well-suited for low-cost, portable, and wearable medical applications.
+This project documents the design, simulation, and hardware implementation of a low-power analog ECG (Electrocardiogram) signal acquisition circuit, named **Cardio Tracker**. The system captures heart activity and displays key waveform features such as P-waves, QRS complexes, and T-waves with low noise and high clarity.
 
 ---
 
 ## Table of Contents
 
 - [1. Introduction](#1-introduction)
-- [2. Circuit Design](#2-circuit-design)
-- [3. Circuit Integration and Testing](#3-circuit-integration-and-testing)
-- [4. Simulation Results](#4-simulation-results)
-- [5. Hardware Results](#5-hardware-results)
-- [6. Inference](#6-inference)
-- [7. Conclusion](#7-conclusion)
-- [8. References](#8-references)
-- [9. Contributors](#9-contributors)
+- [2. Working Methodology](#2-working-methodology)
+- [3. Circuit Simulation](#3-circuit-simulation)
+- [4. Hardware Implementation](#4-hardware-implementation)
+- [5. Inference](#5-inference)
+- [6. Conclusion](#6-conclusion)
+- [7. References](#7-references)
+- [8. Contributors](#8-contributors)
 
 ---
 
 ## 1. Introduction
 
-An electrocardiogram (ECG) is a diagnostic technique used to monitor the electrical activity of the heart. The ECG waveform consists of characteristic components such as the P-wave, QRS complex, and T-wave, which represent different phases of the cardiac cycle.
+An electrocardiogram (ECG) records the heart’s electrical activity via skin electrodes. These signals are typically weak and noisy, requiring amplification and filtering.
 
-Due to the low amplitude of these signals and the presence of external/internal noise, effective signal conditioning is necessary. This project presents a three-stage, low-power ECG circuit with:
+This project focuses on building a **two-stage ECG circuit** comprising:
+- Instrumentation Amplifier
+- Low-Pass Filter
 
-- High gain instrumentation amplification
-- Notch filtering of 60 Hz powerline noise
-- Low-pass filtering of high-frequency muscle artifacts
+The objective is to deliver a clear ECG signal suitable for portable and battery-powered health monitoring applications.
 
 ---
 
-## 2. Circuit Design
+## 2. Working Methodology
 
-### 2.1 Instrumentation Amplifier (INA)
+### Stage 1: Instrumentation Amplifier
 
-- Amplifies low-level differential ECG signals
-- Provides high Common Mode Rejection Ratio (CMRR)
-- Gain set to approximately 1000 using precision resistors
+- Amplifies low-level differential signals
+- High Common Mode Rejection Ratio (CMRR)
+- Gain set to approximately 1000
+- Essential for boosting ECG signal for further processing
 
 **Circuit Diagram:**
 
-<img src="images/ina_circuit.png" alt="Instrumentation Amplifier" width="500"/>
+<img src="images/ina_circuit.png" width="600"/>
 
 ---
 
-### 2.2 Notch Filter
+### Stage 2: Low-Pass Filter
 
-- Removes 60 Hz powerline interference
-- Designed with center frequency f₀ = 60 Hz and Q = 8
-- Targets a narrow frequency band without distorting the overall signal
+- Attenuates high-frequency noise (e.g., EMG interference)
+- Second-order filter with 150 Hz cutoff (per AHA guidelines)
+- Helps clean the amplified ECG signal before visualization
 
 **Circuit Diagram:**
 
-<img src="images/notch_filter_circuit.png" alt="Notch Filter - Circuit Diagram" width="500"/>
-
-**Simulation Output:**
-
-<img src="images/notch_filter_sim_output.png" alt="Notch Filter - simulation output" width="500"/>
+<img src="images/lpf_circuit.png" width="600"/>
 
 ---
 
-### 2.3 Low-Pass Filter
+## 3. Circuit Simulation
 
-- Attenuates high-frequency noise (e.g., muscle tremors)
-- Second-order configuration with a 150 Hz cutoff
-- Meets AHA guidelines for ECG signal clarity
+Simulation was performed using **LTspice**. The ECG waveform was applied using a `.txt` file as a voltage source to mimic a real cardiac signal.
 
-**Circuit Diagram:**
+### AC Analysis Output (Low-Pass Filter)
 
-<img src="images/lpf_circuit.png" alt="Low-Pass Filter - Circuit Diagram" width="500"/>
+<img src="images/transient_output_lpf.png" width="600"/>
 
-**Simulation Output:**
+### Transient Analysis Output
 
-<img src="images/lpf_sim_output.png" alt="Low-Pass Filter - simulation output" width="500"/>
+<img src="images/trasient_analysis_output.png" width="600"/>
 
----
+### AC Analysis Output
 
-## 3. Circuit Integration and Testing
+<img src="images/ac_analysis_output.png" width="600"/>
 
-The circuit stages are connected as follows:
-```
-Instrumentation Amplifier → Notch Filter → Low-Pass Filter
-```
+### Simulation Files
 
-### Testing Methods
-
-1. **LTspice Simulation Input**  
-   - The ECG waveform was applied using a file-based voltage source in LTspice (`PWL` input with ECG waveform data).
-   - This mimicked a realistic ECG signal without requiring an external function generator.
-
-2. **Real ECG Input (Human Subject)**  
-   - Lead II configuration:
-     - Right wrist → Negative input  
-     - Left ankle → Positive input  
-     - Right ankle → Ground  
-   - Use of 9V battery power for safety
-
-### Expected Output
-
-- Clean ECG waveform with visible:
-  - P-wave
-  - QRS complex
-  - T-wave
+- [`ecg_circuit.asc`](simulations/ecg_circuit.asc) – LTspice simulation circuit
+- [`ECG_input.txt`](simulations/ECG_input.txt) – File-based input ECG waveform
 
 ---
 
-## 4. Simulation Results
+## 4. Hardware Implementation
 
-The circuit was simulated using **LTspice**. The ECG waveform was applied using a file-based voltage source, allowing for a realistic biomedical signal to be processed through the analog stages.
+The circuit was constructed on a breadboard using both stages. The output shown below reflects the **combined result** of the instrumentation amplifier and low-pass filter stages.
 
-The simulation included:
+### Key Testing Notes:
 
-- **Transient Analysis**: To observe the time-domain response of the circuit to a typical ECG waveform.
-- **AC Analysis**: To evaluate the frequency response of the circuit, particularly the filter behavior.
-- **Overall Circuit View**: To visualize the complete schematic used for simulation.
+- ECG input from human subject (Lead II configuration)
+- 9V batteries used for electrical safety
+- Electrodes placed on right wrist, left ankle, and ground on right ankle
+- Output monitored using an oscilloscope
 
-### Overall ECG Circuit Diagram (LTspice Schematic)
+### Hardware Setup Image
 
-<img src="images/overall_circuit.png" alt="Overall ECG Circuit Diagram" width="500"/>
+<img src="images/hardware_setup.png" width="600"/>
 
-### Transient Analysis (ECG Waveform Output)
+### Combined Output from INA + LPF Stage
 
-This shows how the input ECG waveform is processed over time. The amplification and filtering stages yield a smooth, readable ECG signal.
+<img src="images/hardware_combined_output.png" width="600"/>
 
-<img src="images/transient_output.png" alt="Transient Output - ECG Waveform" width="500"/>
+### Human Subject with Electrodes
 
-### AC Analysis (Frequency Response)
-
-This plot highlights the frequency characteristics of the circuit, validating the design of the low-pass and notch filters.
-
-<img src="images/ac_analysis_output.png" alt="AC Analysis Output - Frequency Response" width="500"/>
+<img src="images/person_with_patches.png" width="500"/>
 
 ---
 
-## 5. Hardware Results
+## 5. Inference
 
-During practical hardware implementation, the **notch filter stage was removed**. Although the simulation showed successful 60 Hz suppression, the actual notch filter did not behave as expected. It failed to attenuate the 60 Hz interference consistently and introduced distortion in the ECG signal. This may be due to component inaccuracies, low Q-factor realization, or real-world impedance mismatches.
-
-As a result, only the **instrumentation amplifier** and the **low-pass filter** were used in the hardware prototype, which still produced usable ECG signals for basic visualization.
-
-### Observations:
-
-- Output waveforms still showed recognizable P-waves, QRS complexes, and T-waves.
-- Powerline noise was partially mitigated using physical isolation and battery-based power supply.
-- Patch cords and disposable electrodes were used for human testing.
-- The subject was in a resting position, and care was taken to avoid motion artifacts.
-
-**Hardware Setup Image:**
-
-<img src="images/hardware_setup.png" alt="hardware_setup" width="500"/>
-
-**Oscilloscope Output (Human Subject):**
-
-<img src="images/hardware_output_waveform.png" alt="Oscilloscope Output" width="500"/>
-
-**Test Subject with Electrodes:**
-
-<img src="images/person_with_patches.png" alt="Test Subject" width="500"/>
+- The **INA successfully amplified** the weak ECG signals
+- The **low-pass filter cleaned** the signal by reducing high-frequency noise
+- In simulation, both stages were analyzed separately for clarity
+- In hardware, both stages were connected and tested together
+- Final waveform included visible P-waves, QRS complexes, and T-waves
 
 ---
 
-## 6. Inference
+## 6. Conclusion
 
-- The ECG circuit effectively captured and processed real-time cardiac signals.
-- Amplification and low-pass filtering alone were sufficient for a basic ECG waveform.
-- Simulation and hardware performance were generally consistent except for the notch filter stage.
+The **Cardio Tracker** circuit effectively demonstrates how a simple low-power analog chain can capture reliable ECG signals. With minimal components and battery safety, the system can be adapted for portable or wearable ECG monitoring.
 
----
-
-## 7. Conclusion
-
-This project demonstrates that a low-power, analog ECG circuit can be constructed using readily available components to acquire clear cardiac signals. The instrumentation amplifier and low-pass filter stages performed reliably. Future improvements could include:
-
-- Replacing the notch filter with a better-designed active filter
-- Integrating digital signal processing (DSP) for adaptive filtering
-- Creating a wearable version of the circuit
+Future improvements:
+- Integrating digital filtering (DSP) for better accuracy
+- Adding wireless communication (e.g., Bluetooth)
+- Designing a compact PCB for wearable implementation
 
 ---
 
-## 8. References
+## 7. References
 
-1. [IEEE Xplore - Low-Power ECG Circuit Design](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9531733)  
+1. [IEEE Xplore: Low-Power ECG Circuit Design](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9531733)  
 2. [Instructables - ECG Circuit](https://www.instructables.com/Electrocardiogram-ECG-Circuit/)  
 3. [Instructables - ECG Circuit (Part 2)](https://www.instructables.com/Electrocardiogram-ECG-Circuit-2/)  
 4. [Instructables - ECG Circuit (Part 3)](https://www.instructables.com/Electrocardiogram-ECG-Circuit-3/)
 
 ---
 
-## 9. Contributors
+## 8. Contributors
 
-- Pranav Maruti Shanbhag (USN: 4NI24EC407)   
-- Anirudha Jayaprakash (USN: 4NI23EC014)
-- Adithya Y (USN: 4N23EC005) 
+- Pranav Maruti Shanbhag (USN: 4NI24EC407)  
+- Adithya Y (USN: 4N23EC005)  
+- Anirudha Jayaprakash (USN: 4NI23EC014)   
 - Aneesh R Kulkarni (USN: 4NI23EC013)  

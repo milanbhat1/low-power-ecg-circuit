@@ -16,7 +16,7 @@ This project documents the design, simulation, and hardware implementation of a 
 - [8. References](#8-references)
 - [9. Contributors](#9-contributors)
 
----
+--- 
 
 ## 1. Introduction
 

@@ -7,13 +7,14 @@ This project documents the design, simulation, and hardware implementation of a 
 ## Table of Contents
 
 - [1. Introduction](#1-introduction)
-- [2. Working Methodology](#2-working-methodology)
-- [3. Circuit Simulation](#3-circuit-simulation)
-- [4. Hardware Implementation](#4-hardware-implementation)
-- [5. Inference](#5-inference)
-- [6. Conclusion](#6-conclusion)
-- [7. References](#7-references)
-- [8. Contributors](#8-contributors)
+- [2. Circuit Overview](#2-circuit-overview)
+- [3. Working Methodology](#3-working-methodology)
+- [4. Circuit Simulation](#4-circuit-simulation)
+- [5. Hardware Implementation](#5-hardware-implementation)
+- [6. Inference](#6-inference)
+- [7. Conclusion](#7-conclusion)
+- [8. References](#8-references)
+- [9. Contributors](#9-contributors)
 
 ---
 
@@ -29,7 +30,17 @@ The objective is to deliver a clear ECG signal suitable for portable and battery
 
 ---
 
-## 2. Working Methodology
+## 2. Circuit Overview
+
+Below is the complete ECG signal conditioning circuit diagram simulated and implemented for the project.
+
+### Full Circuit Diagram
+
+<img src="images/full_circuit_diagram.png" width="650"/>
+
+---
+
+## 3. Working Methodology
 
 ### Stage 1: Instrumentation Amplifier
 
@@ -47,7 +58,7 @@ The objective is to deliver a clear ECG signal suitable for portable and battery
 ### Stage 2: Low-Pass Filter
 
 - Attenuates high-frequency noise (e.g., EMG interference)
-- Second-order filter with 150 Hz cutoff (per AHA guidelines)
+- Second-order filter with 150 Hz cutoff (as per AHA guidelines)
 - Helps clean the amplified ECG signal before visualization
 
 **Circuit Diagram:**
@@ -56,17 +67,17 @@ The objective is to deliver a clear ECG signal suitable for portable and battery
 
 ---
 
-## 3. Circuit Simulation
+## 4. Circuit Simulation
 
-Simulation was performed using **LTspice**. The ECG waveform was applied using a `.txt` file as a voltage source to mimic a real cardiac signal.
+Simulation was performed using **LTspice**. The ECG waveform was applied using a `.txt` file as a voltage source to replicate a real cardiac signal.
 
-### AC Analysis Output (Low-Pass Filter)
+### Transient Analysis Output – Instrumentation Amplifier
+
+<img src="images/transient_output_ina.png" width="600"/>
+
+### Transient Analysis Output – Low-Pass Filter
 
 <img src="images/transient_output_lpf.png" width="600"/>
-
-### Transient Analysis Output
-
-<img src="images/trasient_analysis_output.png" width="600"/>
 
 ### AC Analysis Output
 
@@ -79,22 +90,22 @@ Simulation was performed using **LTspice**. The ECG waveform was applied using a
 
 ---
 
-## 4. Hardware Implementation
+## 5. Hardware Implementation
 
-The circuit was constructed on a breadboard using both stages. The output shown below reflects the **combined result** of the instrumentation amplifier and low-pass filter stages.
+The circuit was constructed on a breadboard using both INA and low-pass filter stages. The hardware output combines both effects into a single waveform.
 
 ### Key Testing Notes:
 
 - ECG input from human subject (Lead II configuration)
-- 9V batteries used for electrical safety
+- Powered using two 9V batteries for safety
 - Electrodes placed on right wrist, left ankle, and ground on right ankle
-- Output monitored using an oscilloscope
+- Output viewed on oscilloscope
 
 ### Hardware Setup Image
 
 <img src="images/hardware_setup.jpg" width="600"/>
 
-### Combined Output from INA + LPF Stage
+### Combined Output from INA + LPF Stage (Hardware)
 
 <img src="images/hardware_combined_output.jpg" width="600"/>
 
@@ -104,28 +115,28 @@ The circuit was constructed on a breadboard using both stages. The output shown 
 
 ---
 
-## 5. Inference
+## 6. Inference
 
-- The **INA successfully amplified** the weak ECG signals
-- The **low-pass filter cleaned** the signal by reducing high-frequency noise
-- In simulation, both stages were analyzed separately for clarity
-- In hardware, both stages were connected and tested together
-- Final waveform included visible P-waves, QRS complexes, and T-waves
-
----
-
-## 6. Conclusion
-
-The **Cardio Tracker** circuit effectively demonstrates how a simple low-power analog chain can capture reliable ECG signals. With minimal components and battery safety, the system can be adapted for portable or wearable ECG monitoring.
-
-Future improvements:
-- Integrating digital filtering (DSP) for better accuracy
-- Adding wireless communication (e.g., Bluetooth)
-- Designing a compact PCB for wearable implementation
+- The **INA stage** successfully amplified the weak ECG signal
+- The **LPF stage** effectively reduced high-frequency noise
+- Simulation results from each stage matched expected behavior
+- Final hardware output displayed distinct P-waves, QRS complexes, and T-waves
+- The ECG signal was clear, interpretable, and suitable for further processing
 
 ---
 
-## 7. References
+## 7. Conclusion
+
+The **Cardio Tracker** ECG circuit demonstrates the effectiveness of using simple, low-power analog stages to obtain clean ECG signals. The use of battery power and passive components ensures portability and safety for personal health monitoring.
+
+### Future Work:
+- Integrate digital filtering for adaptive noise suppression
+- Add wireless transmission via Bluetooth or Wi-Fi
+- Develop a compact PCB version for wearable integration
+
+---
+
+## 8. References
 
 1. [IEEE Xplore: Low-Power ECG Circuit Design](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9531733)  
 2. [Instructables - ECG Circuit](https://www.instructables.com/Electrocardiogram-ECG-Circuit/)  
@@ -134,10 +145,10 @@ Future improvements:
 
 ---
 
-## 8. Contributors
+## 9. Contributors
 
-- Ballambettu Milan Shankar Bhat (USN: 4NI23EC019)
+- Ballambettu Milan Shankar Bhat (USN: 4NI23EC019)  
 - Pranav Maruti Shanbhag (USN: 4NI24EC407)  
 - Adithya Y (USN: 4N23EC005)  
-- Anirudha Jayaprakash (USN: 4NI23EC014)   
+- Anirudha Jayaprakash (USN: 4NI23EC014)  
 - Aneesh R Kulkarni (USN: 4NI23EC013)  

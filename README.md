@@ -92,11 +92,11 @@ The circuit was constructed on a breadboard using both stages. The output shown 
 
 ### Hardware Setup Image
 
-<img src="images/hardware_setup.png" width="600"/>
+<img src="images/hardware_setup.jpg" width="600"/>
 
 ### Combined Output from INA + LPF Stage
 
-<img src="images/hardware_combined_output.png" width="600"/>
+<img src="images/hardware_combined_output.jpg" width="600"/>
 
 ### Human Subject with Electrodes
 
@@ -136,6 +136,7 @@ Future improvements:
 
 ## 8. Contributors
 
+- Ballambettu Milan Shankar Bhat (USN: 4NI23EC019)
 - Pranav Maruti Shanbhag (USN: 4NI24EC407)  
 - Adithya Y (USN: 4N23EC005)  
 - Anirudha Jayaprakash (USN: 4NI23EC014)   

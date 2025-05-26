@@ -16,7 +16,7 @@ This project documents the design, simulation, and hardware implementation of a 
 - [8. References](#8-references)
 - [9. Contributors](#9-contributors)
 
---- 
+---
 
 ## 1. Introduction
 
@@ -83,10 +83,9 @@ Simulation was performed using **LTspice**. The ECG waveform was applied using a
 
 <img src="images/trasient_analysis_output.png" width="600"/>
 
-
 ### Simulation Files
 
-- [`ecg_circuit.asc`](simulations/ecg_circuit.asc) – LTspice simulation circuit
+- [`ecg_circuit.asc`](simulations/ecg_circuit.asc) – LTspice simulation circuit  
 - [`ECG_input.txt`](simulations/ECG_input.txt) – File-based input ECG waveform
 
 ---
@@ -97,32 +96,30 @@ The circuit was constructed on a breadboard using both INA and low-pass filter s
 
 ### Key Testing Notes:
 
-- ECG input from human subject (Lead II configuration)
-- Powered using two 9V batteries for safety
-- Electrodes placed on right wrist, left ankle, and ground on right ankle
-- Output viewed on oscilloscope
+- ECG input from human subject (Lead II configuration)  
+- Powered using two 9V batteries for safety  
+- Electrodes placed on right wrist, left ankle, and ground on right ankle  
+- Output viewed on oscilloscope  
 
-### Hardware Setup Image
+### Hardware Images
 
-<img src="images/hardware_setup.jpg" width="600"/>
+| Description                                | Image |
+|--------------------------------------------|-------|
+| **Hardware Setup (Breadboard Circuit)**     | <img src="images/hardware_setup.jpg" width="600"/> |
+| **Combined Output from INA + LPF Stage**    | <img src="images/hardware_combined_output.jpg" width="600"/> |
+| **Human Subject with Electrodes Attached**  | <img src="images/person_with_patches.jpg" width="400"/>|
 
-### Combined Output from INA + LPF Stage (Hardware)
-
-<img src="images/hardware_combined_output.jpg" width="600"/>
-
-### Human Subject with Electrodes
-
-<img src="images/person_with_patches.jpg" width="500"/>
+> We aim to continue this project by integrating it with **IoT technologies** such as **Bluetooth or Wi-Fi modules** for real-time wireless ECG monitoring and remote diagnostics.
 
 ---
 
 ## 6. Inference
 
-- The **INA stage** successfully amplified the weak ECG signal
-- The **LPF stage** effectively reduced high-frequency noise
-- Simulation results from each stage matched expected behavior
-- Final hardware output displayed distinct P-waves, QRS complexes, and T-waves
-- The ECG signal was clear, interpretable, and suitable for further processing
+- The **INA stage** successfully amplified the weak ECG signal  
+- The **LPF stage** effectively reduced high-frequency noise  
+- Simulation results from each stage matched expected behavior  
+- Final hardware output displayed distinct P-waves, QRS complexes, and T-waves  
+- The ECG signal was clear, interpretable, and suitable for further processing  
 
 ---
 
@@ -131,9 +128,9 @@ The circuit was constructed on a breadboard using both INA and low-pass filter s
 The **Cardio Tracker** ECG circuit demonstrates the effectiveness of using simple, low-power analog stages to obtain clean ECG signals. The use of battery power and passive components ensures portability and safety for personal health monitoring.
 
 ### Future Work:
-- Integrate digital filtering for adaptive noise suppression
-- Add wireless transmission via Bluetooth or Wi-Fi
-- Develop a compact PCB version for wearable integration
+- Integrate digital filtering for adaptive noise suppression  
+- Add wireless transmission via Bluetooth or Wi-Fi  
+- Develop a compact PCB version for wearable integration  
 
 ---
 

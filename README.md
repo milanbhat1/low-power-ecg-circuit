@@ -112,7 +112,7 @@ The circuit was constructed on a breadboard using both INA and low-pass filter s
 
 ### Human Subject with Electrodes
 
-<img src="images/person_with_patches.png" width="500"/>
+<img src="images/person_with_patches.jpg" width="500"/>
 
 ---
 
